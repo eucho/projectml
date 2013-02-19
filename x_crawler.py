@@ -23,11 +23,11 @@ def crawl(frm, to):
 		#write into file
 		list_all = []
 		for item in zip(list_id[1:], list_pid[1:], list_coder[1:], list_res):
-			list_all.append(item[0].string.encode('ascii') + '\t' + \
-				item[1].a.string[:4].encode('ascii') + '\t' + \
-				item[2].string.encode('ascii') + '\t' + \
-				item[3].string.encode('ascii') + '\n')
-		fw.writelines(list_all)
+			list_all.append(item[0].string + '\t' + \
+				item[1].a.string[:4] + u'\t' + \
+				item[2].string + u'\t' + \
+				item[3].string + u'\n')
+		fw.writelines([x.encode('utf-8') for x in list_all])
 		fw.flush()
 
 		#find next page
@@ -37,4 +37,4 @@ def crawl(frm, to):
 	fw.close()
 
 if __name__ == '__main__':
-	crawl(50000,49500)
+	crawl(33745,30000)
